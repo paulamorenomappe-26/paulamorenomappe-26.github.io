@@ -3,179 +3,571 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Paula Moreno | Business Analytics Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <title>Paula Moreno | Business Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
     :root {
-      --ink: #1a1a2e; --mid: #4a4a6a; --light: #9090aa;
-      --bg: #f8f7f4; --white: #ffffff; --accent: #2d5be3;
-      --accent-soft: #eef1fd; --border: #e2e2ec;
-      --analytics: #1a6b5a; --analytics-soft: #edf7f4;
-      --database: #7b3fa0; --database-soft: #f5edfb;
-      --python: #c45c00; --python-soft: #fff3e8;
+      --black: #0a0a0f;
+      --ink: #1c1c28;
+      --mid: #5a5a72;
+      --muted: #9898b0;
+      --rule: #e4e4ef;
+      --bg: #f9f9fc;
+      --white: #ffffff;
+      --blue: #1740c4;
+      --blue-pale: #f0f3ff;
     }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); min-height: 100vh; }
-    header { background: var(--white); border-bottom: 1px solid var(--border); padding: 56px 40px 48px; max-width: 860px; margin: 0 auto; }
-    .eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
-    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.4rem); line-height: 1.1; color: var(--ink); margin-bottom: 20px; }
-    .bio { font-size: 1rem; line-height: 1.75; color: var(--mid); max-width: 560px; font-weight: 300; }
-    .connect { display: flex; gap: 20px; margin-top: 32px; flex-wrap: wrap; }
-    .connect a { font-size: 0.85rem; font-weight: 500; color: var(--accent); text-decoration: none; border: 1px solid var(--accent); padding: 8px 18px; border-radius: 4px; transition: background 0.15s, color 0.15s; }
-    .connect a:hover { background: var(--accent); color: var(--white); }
-    main { max-width: 860px; margin: 0 auto; padding: 48px 40px 80px; }
-    .section { margin-bottom: 56px; }
-    .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 14px; border-bottom: 1px solid var(--border); }
-    .section-icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 15px; }
-    .section-icon.analytics { background: var(--analytics-soft); }
-    .section-icon.database { background: var(--database-soft); }
-    .section-icon.python { background: var(--python-soft); }
-    .section-title { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-    .section-title.analytics { color: var(--analytics); }
-    .section-title.database { color: var(--database); }
-    .section-title.python { color: var(--python); }
-    .cards { display: flex; flex-direction: column; gap: 14px; }
-    .card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 22px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; transition: box-shadow 0.15s, border-color 0.15s; }
-    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.07); border-color: #c8c8e0; }
-    .card-body { flex: 1; }
-    .card-title { font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 6px; line-height: 1.4; }
-    .card-desc { font-size: 0.84rem; color: var(--mid); line-height: 1.6; font-weight: 300; }
-    .card-link { flex-shrink: 0; font-size: 0.78rem; font-weight: 600; text-decoration: none; padding: 7px 16px; border-radius: 4px; white-space: nowrap; transition: opacity 0.15s; align-self: center; }
-    .card-link:hover { opacity: 0.8; }
-    .card-link.analytics { background: var(--analytics-soft); color: var(--analytics); }
-    .card-link.database { background: var(--database-soft); color: var(--database); }
-    .card-link.python { background: var(--python-soft); color: var(--python); }
-    .badge { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 8px; border-radius: 3px; margin-left: 8px; vertical-align: middle; background: var(--accent-soft); color: var(--accent); }
-    footer { text-align: center; padding: 32px 20px; font-size: 0.78rem; color: var(--light); border-top: 1px solid var(--border); }
-    @media (max-width: 600px) {
-      header, main { padding-left: 20px; padding-right: 20px; }
-      .card { flex-direction: column; }
-      .card-link { align-self: flex-start; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(249,249,252,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 48px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      letter-spacing: 0.01em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 56px;
+    }
+
+    .hero-left {
+      background: var(--black);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--blue);
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 4.5vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--white);
+      margin-bottom: 32px;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: #a0a8ff;
+    }
+
+    .hero-bio {
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: #9898b8;
+      max-width: 400px;
+      font-weight: 300;
+      margin-bottom: 48px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--blue);
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .btn-primary:hover { opacity: 0.85; }
+
+    .btn-ghost {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #9898b8;
+      text-decoration: none;
+      padding: 12px 28px;
+      border: 1px solid #2e2e42;
+      border-radius: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: #9898b8; color: var(--white); }
+
+    .hero-right {
+      background: var(--white);
+      padding: 80px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .skills-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    .skill-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .skill-item:first-of-type { border-top: 1px solid var(--rule); }
+
+    .skill-num {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--blue);
+      padding-top: 3px;
+    }
+
+    .skill-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .skill-desc {
+      font-size: 0.82rem;
+      color: var(--mid);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    .section-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 96px 48px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 56px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--black);
+    }
+
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .category-block { margin-bottom: 72px; }
+
+    .category-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .category-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--blue-pale);
+    }
+
+    .project-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .project-row.single { grid-template-columns: 1fr; }
+
+    .project-card {
+      background: var(--white);
+      padding: 32px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+
+    .project-card:hover { background: var(--blue-pale); }
+
+    .project-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--black);
+      line-height: 1.4;
+      flex: 1;
+    }
+
+    .project-type {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: var(--bg);
+      padding: 4px 10px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .project-desc {
+      font-size: 0.82rem;
+      color: var(--mid);
+      line-height: 1.75;
+      font-weight: 300;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--blue);
+      text-decoration: none;
+      margin-top: 8px;
+      transition: gap 0.2s;
+    }
+
+    .project-link:hover { gap: 10px; }
+    .project-link::after { content: '→'; }
+
+    footer {
+      background: var(--black);
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .footer-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      color: var(--white);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .footer-links a {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: #3a3a52;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left, .hero-right { padding: 60px 28px; }
+      .section-wrap { padding: 64px 24px; }
+      .project-row { grid-template-columns: 1fr; }
+      footer { padding: 36px 24px; }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <p class="eyebrow">Portfolio · Business Analytics</p>
-  <h1>Paula Moreno</h1>
-<p class="bio">
-    Master of Business Analytics candidate at UTS Sydney, with a background in marketing, retail leadership, and customer-facing environments. Proactive, detail-oriented, and solutions-focused. I combine strong analytical skills in Python, SQL, and data visualisation with proven communication and stakeholder management abilities. I bring energy, commercial thinking, and a genuine enthusiasm for learning to every environment I work in.
-  </p>
-  <div class="connect">
-<a href="https://www.linkedin.com/in/paula-moreno-analytics" target="_blank">LinkedIn ↗</a>
-<a href="mailto:paulamorenomappe@gmail.com">Email me</a>
+<nav>
+  <span class="nav-name">Paula Moreno</span>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="https://www.linkedin.com/in/paula-moreno-analytics" target="_blank">LinkedIn</a></li>
+    <li><a href="mailto:paulamorenomappe@gmail.com">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-label">Business Analytics Portfolio</p>
+    <h1 class="hero-name">Paula<br><em>Moreno</em></h1>
+    <p class="hero-bio">
+      Master of Business Analytics candidate at UTS Sydney, with a background in marketing, retail leadership, and customer-facing environments. Proactive, detail-oriented, and solutions-focused — combining analytical skills in Python, SQL, and data visualisation with proven communication and stakeholder management abilities.
+    </p>
+    <div class="hero-cta">
+      <a href="#work" class="btn-primary">View Work</a>
+      <a href="mailto:paulamorenomappe@gmail.com" class="btn-ghost">Get in Touch</a>
+    </div>
   </div>
-</header>
 
-<main>
+  <div class="hero-right">
+    <p class="skills-label">Core Competencies</p>
 
-  <div class="section">
+    <div class="skill-item">
+      <span class="skill-num">01</span>
+      <div>
+        <div class="skill-title">Analyse</div>
+        <div class="skill-desc">Statistical modelling, regression analysis, and hypothesis testing to uncover patterns and drive evidence-based decisions.</div>
+      </div>
+    </div>
+
+    <div class="skill-item">
+      <span class="skill-num">02</span>
+      <div>
+        <div class="skill-title">Visualise</div>
+        <div class="skill-desc">Translating complex datasets into clear, compelling narratives using Python, SQL, and data visualisation tools.</div>
+      </div>
+    </div>
+
+    <div class="skill-item">
+      <span class="skill-num">03</span>
+      <div>
+        <div class="skill-title">Communicate</div>
+        <div class="skill-desc">Presenting analytical findings to diverse stakeholders with clarity, confidence, and commercial context.</div>
+      </div>
+    </div>
+
+    <div class="skill-item">
+      <span class="skill-num">04</span>
+      <div>
+        <div class="skill-title">Deliver</div>
+        <div class="skill-desc">Organised, proactive, and solutions-focused — managing priorities and supporting project delivery in fast-paced environments.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="section-wrap">
     <div class="section-header">
-      <div class="section-icon analytics">📊</div>
-      <span class="section-title analytics">Business Analytics</span>
+      <h2 class="section-title">Selected Work</h2>
+      <span class="section-tag">UTS Sydney · 2026</span>
     </div>
-    <div class="cards">
 
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Business Analytics Simulation — Udemy Courses</div>
-          <div class="card-desc">Playing the role of a data analyst for a web development company considering expansion into the online education market. Analysis of pricing and subscription data to support strategic decisions.</div>
+    <div class="category-block">
+      <p class="category-label">Business Analytics</p>
+      <div class="project-row">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Business Analytics Simulation — Udemy Courses</div>
+            <span class="project-type">DOCX</span>
+          </div>
+          <p class="project-desc">Data analyst role for a web development company evaluating expansion into the online education market. Analysis of pricing and subscription data to support strategic decision-making.</p>
+          <a href="Assign2_Paula_Moreno.docx" target="_blank" class="project-link">Open file</a>
         </div>
-        <a href="Assign2_Paula_Moreno.docx" target="_blank" class="card-link analytics">View <span class="badge">DOCX</span></a>
+
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Private Hospital Insurance in Australia — Long-Term Trends</div>
+            <span class="project-type">DOCX</span>
+          </div>
+          <p class="project-desc">Consulting analyst role providing economic and policy advice to government, investigating long-term trends and individual determinants of private hospital insurance uptake.</p>
+          <a href="Assign3_Paula_Moreno.docx" target="_blank" class="project-link">Open file</a>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Private Hospital Insurance in Australia — Long-Term Trends and Individual Determinants of Uptake</div>
-          <div class="card-desc">Analyst role at a consulting firm providing economic and policy advice to government. Investigating long-term trends and factors influencing private hospital insurance uptake in Australia.</div>
+      <div class="project-row" style="margin-top:1px;">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Discount Strategy Analysis — D2C Apparel Retailer</div>
+            <span class="project-type">DOCX</span>
+          </div>
+          <p class="project-desc">Preliminary Business Analytics study examining discount strategy for a premium direct-to-consumer apparel retailer, with data-driven findings and strategic recommendations.</p>
+          <a href="PAULA_MORENO_Assessment2_Report.docx" target="_blank" class="project-link">Open file</a>
         </div>
-        <a href="Assign3_Paula_Moreno.docx" target="_blank" class="card-link analytics">View <span class="badge">DOCX</span></a>
+
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Discount Strategy — Jupyter Notebook Analysis</div>
+            <span class="project-type">IPYNB</span>
+          </div>
+          <p class="project-desc">Interactive notebook containing the full analytical code, visualisations, and statistical outputs underpinning the discount strategy study.</p>
+          <a href="PAULA_MORENO_Assessment2_Report (2).ipynb" target="_blank" class="project-link">Open file</a>
+        </div>
       </div>
 
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Discount Strategy Analysis — Premium Direct-to-Consumer Apparel Retailer <span class="badge">Report</span></div>
-          <div class="card-desc">Preliminary Business Analytics study analysing discount strategy for a premium D2C apparel retailer. Data-driven findings and strategic recommendations.</div>
+      <div class="project-row single" style="margin-top:1px;">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">From Insight to Impact — Discount Strategy Presentation</div>
+            <span class="project-type">PDF</span>
+          </div>
+          <p class="project-desc">Executive presentation delivering a data-driven approach to identifying at-risk customers and maximising discount ROI, with actionable business recommendations.</p>
+          <a href="PAULA_MORENO_Assessment3_VIDEOPPT.pdf" target="_blank" class="project-link">Open file</a>
         </div>
-        <a href="PAULA_MORENO_Assessment2_Report.docx" target="_blank" class="card-link analytics">View <span class="badge">DOCX</span></a>
       </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Discount Strategy Analysis — Jupyter Notebook <span class="badge">Notebook</span></div>
-          <div class="card-desc">Interactive Jupyter notebook containing the full analysis, code, and visualisations supporting the discount strategy study.</div>
-        </div>
-        <a href="PAULA_MORENO_Assessment2_Report (2).ipynb" target="_blank" class="card-link analytics">View <span class="badge">IPYNB</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Discount Strategy — From Insight to Impact <span class="badge">Presentation</span></div>
-          <div class="card-desc">A data-driven approach to identifying at-risk customers and maximising discount ROI. Continuation with mindful insights and actionable recommendations.</div>
-        </div>
-        <a href="PAULA_MORENO_Assessment3_VIDEOPPT.pdf" target="_blank" class="card-link analytics">View <span class="badge">PDF</span></a>
-      </div>
-
     </div>
+
+    <div class="category-block">
+      <p class="category-label">Database</p>
+      <div class="project-row">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Luxury Fashion Resale Database</div>
+            <span class="project-type">PDF</span>
+          </div>
+          <p class="project-desc">Design and implementation of a relational database for a luxury fashion resale platform, including table architecture, relationship mapping, and minimum viable system conditions.</p>
+          <a href="32606 Database Assessment 5  2026  Paula Moreno  student id 26177980.pdf" target="_blank" class="project-link">Open file</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Luxury Fashion Resale — SQL Queries</div>
+            <span class="project-type">TXT</span>
+          </div>
+          <p class="project-desc">SQL implementation of the luxury fashion resale database — table creation scripts, relational queries, and data operations supporting the full system design.</p>
+          <a href="SQL- Resee.txt" target="_blank" class="project-link">Open file</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="category-block">
+      <p class="category-label">Python</p>
+      <div class="project-row">
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Private Hospital Insurance — Python Analysis Task 1</div>
+            <span class="project-type">IPYNB</span>
+          </div>
+          <p class="project-desc">Investigation of PHI membership and coverage ratio changes pre- and post-pandemic, analysing age group trends and market sustainability using Python statistical methods.</p>
+          <a href="Paula_Moreno_Studio1_Assessment_3_Task_1_.ipynb" target="_blank" class="project-link">Open file</a>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card-top">
+            <div class="project-title">Private Hospital Insurance — Python Analysis Task 2</div>
+            <span class="project-type">IPYNB</span>
+          </div>
+          <p class="project-desc">Linear Probability Model estimating the micro-level determinants of individual PHI uptake decisions, with sections covering data exploration, modelling, and causal inference.</p>
+          <a href="Paula_Moreno_Studio1_Assessment_3_Task_2.ipynb" target="_blank" class="project-link">Open file</a>
+        </div>
+      </div>
+    </div>
+
   </div>
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon database">🗄️</div>
-      <span class="section-title database">Database</span>
-    </div>
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Luxury Fashion Resale Database</div>
-          <div class="card-desc">Design and creation of a database for a luxury fashion resale platform — a simplified real-world software system with defined table structure, relationships, and minimum necessary conditions.</div>
-        </div>
-        <a href="32606 Database Assessment 5  2026  Paula Moreno  student id 26177980.pdf" target="_blank" class="card-link database">View <span class="badge">PDF</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Luxury Fashion Resale Database — SQL</div>
-          <div class="card-desc">SQL implementation of the luxury fashion resale database, including table creation, queries, and data operations.</div>
-        </div>
-        <a href="SQL- Resee.txt" target="_blank" class="card-link database">View <span class="badge">TXT</span></a>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-icon python">🐍</div>
-      <span class="section-title python">Python</span>
-    </div>
-    <div class="cards">
-
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Private Hospital Insurance — Python Analysis Task 1</div>
-          <div class="card-desc">Investigation of PHI membership and coverage ratio changes pre- and post-pandemic. Analysis of age group trends and assessment of market sustainability using Python.</div>
-        </div>
-        <a href="Paula_Moreno_Studio1_Assessment_3_Task_1_.ipynb" target="_blank" class="card-link python">View <span class="badge">IPYNB</span></a>
-      </div>
-
-      <div class="card">
-        <div class="card-body">
-          <div class="card-title">Private Hospital Insurance — Python Analysis Task 2</div>
-          <div class="card-desc">Second Python notebook continuing the PHI study — additional scripts, visualisations, and analysis supporting the research findings.</div>
-        </div>
-        <a href="Paula_Moreno_Studio1_Assessment_3_Task_2.ipynb" target="_blank" class="card-link python">View <span class="badge">IPYNB</span></a>
-      </div>
-
-    </div>
-  </div>
-
-</main>
+</section>
 
 <footer>
-  Paula Moreno · Master of Business Analytics · UTS Sydney · 2026
+  <span class="footer-name">Paula Moreno</span>
+  <div class="footer-links">
+    <a href="https://www.linkedin.com/in/paula-moreno-analytics" target="_blank">LinkedIn</a>
+    <a href="mailto:paulamorenomappe@gmail.com">Email</a>
+  </div>
+  <p class="footer-copy">Master of Business Analytics · UTS Sydney · 2026</p>
 </footer>
 
 </body>
