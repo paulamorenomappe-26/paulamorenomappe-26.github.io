@@ -1,10 +1,5 @@
 
 -- The Luxury Fashion Resale Database
--- Assignment 5, Sem 1, 2026
---
--- Student Name:   Paula Moreno Mappe
--- Student Email:  Paula.MorenoMappe@student.uts.edu.au
--- Student Number: 26177980
 --
 -- This database is inspired by the website (https://www.resee.com/en/)
 -- ReSee is a Paris-based company founded in
